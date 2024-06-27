@@ -45,13 +45,17 @@ function App() {
     //   })
     // });
   };
+  // Handler function to toggle edit property on todo item using todo id.
+  const editTodo = (todoId) => {
+    setTodos(todos.map((todo) => todo.id === todoId ? {...todo, isEditing: !todo.isEditing} : todo));
+  };
   // Handler function to delete todos with given todo id
   const deleteTodo = (todoId) => {
     setTodos(todos.filter((todo) => todo.id !== todoId));
   };
   // Function to map through todos state array and render Todo component for each item
   const displayTodos = todos.map((todo) => (
-    <Todo id={todo.id} todo={todo} toggleComplete={toggleComplete} deleteTodo={deleteTodo} />
+    <Todo id={todo.id} todo={todo} toggleComplete={toggleComplete} deleteTodo={deleteTodo} editTodo={editTodo} />
   ));
   return (
     <div className="App">
