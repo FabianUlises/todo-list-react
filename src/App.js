@@ -18,9 +18,40 @@ function App() {
       isEditing: false
     }]);
   };
+  // Update state completed value
+  const toggleComplete = (todoId) => {
+    // Looping through todos state array & updating completed value based on todo id
+    setTodos((currentTodos) => {
+      return currentTodos.map((todo) => {
+        if(todo.id === todoId) {
+          return { ...todo, completed: !todo.completed }
+        }
+        return todo;
+      })
+    });
+    // todos.map((todo) => {
+      // setTodos(todos.map((todo) => todo.id === todoId ? {...todo, completed: !todo.completed} : todo));
+      // if(todo.id === todoId) {
+      //   setTodos([...todos, {
+          
+      //   }]);
+      // }
+    // setTodos((currentTodos) => {
+    //   return currentTodos.map((todo) => {
+    //     if(todo.id === todoId) {
+    //       return { ...todo, completed: !todo.completed }
+    //     }
+    //     return todo;
+    //   })
+    // });
+  };
+  // Handler function to delete todos with given todo id
+  const deleteTodo = (todoId) => {
+    setTodos(todos.filter((todo) => todo.id !== todoId));
+  };
   // Function to map through todos state array and render Todo component for each item
   const displayTodos = todos.map((todo) => (
-    <Todo id={todo.id} task={todo.task} />
+    <Todo id={todo.id} todo={todo} toggleComplete={toggleComplete} deleteTodo={deleteTodo} />
   ));
   return (
     <div className="App">
