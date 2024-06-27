@@ -25,6 +25,7 @@ function App() {
   return (
     <div className="App">
       <TodoForm addTodo={addTodo} />
+      {/* Only displaying todos if array isnt empty */}
       { todos.length ? displayTodos : null }
     </div>
   );

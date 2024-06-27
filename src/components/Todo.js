@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-const Todo = () => {
+const Todo = (props) => {
     return (
-        <li>
-            todo item
+        <li key={props.todoId}>
+            {props.task}
+            <span>✏️</span>
+            <span>🗑️</span>
         </li>
     );
 };
