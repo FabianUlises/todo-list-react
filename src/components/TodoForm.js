@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-const TodoForm = () => {
+const TodoForm = (props) => {
     // State
     const [value, setValue] = useState('');
     // Form submit handler
