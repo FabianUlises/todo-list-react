@@ -6,6 +6,8 @@ const TodoForm = (props) => {
     const handleSubmit = (e) => {
         // Prevent browser default
         e.preventDefault();
+        // Using props to add new task to todos array state
+        props.addTodo(value);
         // Resetting value state
         setValue('');
     };
