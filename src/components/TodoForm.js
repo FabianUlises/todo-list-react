@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 const TodoForm = () => {
+    const [value, setValue] = useState('');
     return(
         <form>
             <input type='text' placeholder='Enter new task' className='todo-input' />
