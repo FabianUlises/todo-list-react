@@ -6,6 +6,8 @@ const TodoForm = () => {
     const handleSubmit = (e) => {
         // Prevent browser default
         e.preventDefault();
+        // Resetting value state
+        setValue('');
     };
     return(
         <form onSubmit={(e) => handleSubmit(e)}>
