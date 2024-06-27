@@ -8,9 +8,12 @@ function App() {
   const addTodo = (todo) => {
     // Manually creating todo id
     const todoId = Math.floor(Math.random() * 9999);
-    // Updating state
+    // Updating state with task data
     setTodos([...todos], {
-
+      id: todoId,
+      task: todo,
+      completed: false,
+      isEditing: false
     });
   };
   return (
