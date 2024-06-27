@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react';
 import './App.css';
 import TodoForm from './components/TodoForm';
+import Todo from './components/Todo';
 function App() {
   // State
   const [todos, setTodos] = useState([]);
@@ -17,9 +18,14 @@ function App() {
       isEditing: false
     }]);
   };
+  // Function to map through todos state array and render Todo component for each item
+  const displayTodos = todos.map((todo) => (
+    <Todo id={todo.id} task={todo.task} />
+  ));
   return (
     <div className="App">
       <TodoForm addTodo={addTodo} />
+      { todos.length ? displayTodos : null }
     </div>
   );
 }
