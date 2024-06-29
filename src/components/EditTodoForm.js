@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 const EditTodoForm = (props) => {
     // State
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState(props.todo.task ?  props.todo.task : '');
     // Form submit handler
     const handleSubmit = (e) => {
         // Prevent browser default
