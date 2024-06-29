@@ -3,12 +3,13 @@ import './App.css';
 import TodoForm from './components/TodoForm';
 import Todo from './components/Todo';
 import EditTodoForm from './components/EditTodoForm';
+import TodoList from './components/TodoList';
 function App() {
   // State
   const [todos, setTodos] = useState([]);
   // Function to update state with new task
   const addTodo = (todo) => {
-    if(todo === '') return
+    if(todo === '') return;
     // Manually creating todo id
     const todoId = Math.floor(Math.random() * 9999);
     // Updating state with task data
@@ -22,14 +23,14 @@ function App() {
   // Update state completed value
   const toggleComplete = (todoId) => {
     // Looping through todos state array & updating completed value based on todo id
-    setTodos((currentTodos) => {
-      return currentTodos.map((todo) => {
+    setTodos((currentTodos) => 
+      currentTodos.map((todo) => {
         if(todo.id === todoId) {
           return { ...todo, completed: !todo.completed }
         }
         return todo;
       })
-    });
+    );
     // todos.map((todo) => {
       // setTodos(todos.map((todo) => todo.id === todoId ? {...todo, completed: !todo.completed} : todo));
       // if(todo.id === todoId) {
@@ -50,6 +51,7 @@ function App() {
   };
   // Handler function to update todo with new input
   const updateTodo = (value, todoId) => {
+    if(value === '') return;
     setTodos((currentTodos) => 
       todos.map((todo) => todo.id ===todoId ? {...todo, task: value, isEditing: !todo.isEditing} : todo));
   };
@@ -61,10 +63,11 @@ function App() {
   return (
     <div className="App">
       <TodoForm addTodo={addTodo} />
+      <TodoList />
       {/* Only displaying todos if array isnt empty */}
       { todos.length ? displayTodos : null }
     </div>
   );
-}
+};
 
 export default App;
