@@ -2,6 +2,7 @@ import React, { Component, useState } from 'react';
 import './App.css';
 import TodoForm from './components/TodoForm';
 import Todo from './components/Todo';
+import EditTodoForm from './components/EditTodoForm';
 function App() {
   // State
   const [todos, setTodos] = useState([]);
@@ -36,26 +37,26 @@ function App() {
           
       //   }]);
       // }
-    // setTodos((currentTodos) => {
-    //   return currentTodos.map((todo) => {
-    //     if(todo.id === todoId) {
-    //       return { ...todo, completed: !todo.completed }
-    //     }
-    //     return todo;
-    //   })
-    // });
   };
-  // Handler function to toggle edit property on todo item using todo id.
+  // Handler function to toggle edit property on todo item using todo id
   const editTodo = (todoId) => {
-    setTodos(todos.map((todo) => todo.id === todoId ? {...todo, isEditing: !todo.isEditing} : todo));
+    setTodos((currentTodos) =>
+      currentTodos.map((todo) => todo.id === todoId ? {...todo, isEditing: !todo.isEditing} : todo));
   };
   // Handler function to delete todos with given todo id
   const deleteTodo = (todoId) => {
-    setTodos(todos.filter((todo) => todo.id !== todoId));
+    setTodos((currentTodos) =>
+      currentTodos.filter((todo) => todo.id !== todoId));
+  };
+  // Handler function to update todo with new input
+  const updateTodo = (value, todoId) => {
+    setTodos((currentTodos) => 
+      todos.map((todo) => todo.id ===todoId ? {...todo, task: value, isEditing: !todo.isEditing} : todo));
   };
   // Function to map through todos state array and render Todo component for each item
   const displayTodos = todos.map((todo) => (
-    <Todo id={todo.id} todo={todo} toggleComplete={toggleComplete} deleteTodo={deleteTodo} editTodo={editTodo} />
+    todo.isEditing ? (<EditTodoForm todo={todo} updateTodo={updateTodo} />) :
+    (<Todo id={todo.id} todo={todo} toggleComplete={toggleComplete} deleteTodo={deleteTodo} editTodo={editTodo} />)
   ));
   return (
     <div className="App">
