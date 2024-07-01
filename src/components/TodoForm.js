@@ -6,7 +6,7 @@ const TodoForm = (props) => {
     const addTodo = (todo) => {
         if(todo === '' || /^\s*$/.test(todo)) return;
         // Manually creating todo id
-        const todoId = Math.floor(Math.random() * 9999);
+        const todoId = Date.now();
         // Updating state with task data
         props.setTodos([...props.todos, {
             id: todoId,
