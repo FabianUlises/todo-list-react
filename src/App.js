@@ -7,7 +7,7 @@ function App() {
   const [todos, setTodos] = useState([]);
   // Helper function to update state with new task
   const addTodo = (todo) => {
-    if(todo === '') return;
+    if(todo === '' || /^\s*$/.test(todo)) return;
     // Manually creating todo id
     const todoId = Math.floor(Math.random() * 9999);
     // Updating state with task data
