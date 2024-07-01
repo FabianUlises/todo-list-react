@@ -33,7 +33,7 @@ const TodoList = ({setTodos, todos}) => {
     };
     // Handler function to update todo with new input
     const updateTodo = (value, todoId) => {
-        if(value === '') return;
+        if(value === '' || /^\s*$/.test(value)) return;
             setTodos((currentTodos) => 
                 currentTodos.map((todo) => todo.id ===todoId ? {...todo, task: value, isEditing: !todo.isEditing} : todo));
     };
