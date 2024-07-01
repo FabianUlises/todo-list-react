@@ -2,12 +2,25 @@ import React, { Component, useState } from 'react';
 const TodoForm = (props) => {
     // State
     const [value, setValue] = useState('');
+    // Helper function to update state with new task
+    const addTodo = (todo) => {
+        if(todo === '' || /^\s*$/.test(todo)) return;
+        // Manually creating todo id
+        const todoId = Math.floor(Math.random() * 9999);
+        // Updating state with task data
+        props.setTodos([...props.todos, {
+            id: todoId,
+            task: todo,
+            completed: false,
+            isEditing: false
+        }]);
+    };
     // Form submit handler
     const handleSubmit = (e) => {
         // Prevent browser default
         e.preventDefault();
         // Using props to add new task to todos array state
-        props.addTodo(value);
+        addTodo(value);
         // Resetting value state
         setValue('');
     };
