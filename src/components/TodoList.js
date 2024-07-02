@@ -38,7 +38,7 @@ const TodoList = ({todos, setTodos}) => {
             currentTodos.filter((todo) => todo.id !== todoId));
     };
     // Function to map through todos state array and render Todo component for each item
-    const displayTodos = todos.map((todo) => (
+    const displayTodos = todos.sort((a, b) => b.id - a.id).map((todo) => (
         todo.isEditing ? (<EditTodoForm todo={todo} updateTodo={updateTodo} />) :
         (<Todo todo={todo} toggleComplete={toggleComplete} toggleEdit={toggleEdit} deleteTodo={deleteTodo} />)
     ));
