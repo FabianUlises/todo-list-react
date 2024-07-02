@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import EditTodoForm from './EditTodoForm';
 import Todo from './Todo';
-const TodoList = ({setTodos, todos}) => {
+const TodoList = ({todos, setTodos}) => {
     // Handler function to toggle edit property on todo item using todo id
     const editTodo = (todoId) => {
         setTodos((currentTodos) =>
@@ -40,7 +40,7 @@ const TodoList = ({setTodos, todos}) => {
     // Function to map through todos state array and render Todo component for each item
     const displayTodos = todos.map((todo) => (
         todo.isEditing ? (<EditTodoForm todo={todo} updateTodo={updateTodo} />) :
-        (<Todo id={todo.id} todo={todo} toggleComplete={toggleComplete} deleteTodo={deleteTodo} editTodo={editTodo} />)
+        (<Todo todo={todo} toggleComplete={toggleComplete} deleteTodo={deleteTodo} editTodo={editTodo} />)
     ));
     return (
         <ul className='todo-list'>

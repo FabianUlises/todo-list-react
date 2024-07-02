@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-const Todo = (props) => {
+const Todo = ({todo, toggleComplete, editTodo, deleteTodo}) => {
     return (
-        <li key={props.todo.id}>
-            <p onClick={() => props.toggleComplete(props.todo.id)}>{props.todo.task}</p>
-            <span onClick={() => props.editTodo(props.todo.id)}>✏️</span>
-            <span onClick={() => props.deleteTodo(props.todo.id)}>🗑️</span>
+        <li key={todo.id}>
+            <p onClick={() => toggleComplete(todo.id)}>{todo.task}</p>
+            <span onClick={() => editTodo(todo.id)}>✏️</span>
+            <span onClick={() => deleteTodo(todo.id)}>🗑️</span>
         </li>
     );
 };

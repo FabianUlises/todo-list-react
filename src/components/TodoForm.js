@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-const TodoForm = (props) => {
+const TodoForm = ({todos, setTodos}) => {
     // State
     const [value, setValue] = useState('');
     // Helper function to update state with new task
@@ -8,7 +8,7 @@ const TodoForm = (props) => {
         // Manually creating todo id
         const todoId = Date.now();
         // Updating state with task data
-        props.setTodos([...props.todos, {
+        setTodos([...todos, {
             id: todoId,
             task: todo,
             completed: false,
