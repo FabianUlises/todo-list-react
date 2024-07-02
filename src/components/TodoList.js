@@ -7,7 +7,7 @@ const TodoList = ({todos, setTodos}) => {
         setTodos((currentTodos) =>
             currentTodos.map((todo) => todo.id === todoId ? {...todo, isEditing: !todo.isEditing} : todo));
     };
-    // Helper function to toggle todo state completed value
+    // Helper function to toggle todo state completed value using todo id
     const toggleComplete = (todoId) => {
         // Looping through todos state array & updating completed value based on todo id
         setTodos((currentTodos) => 
@@ -26,21 +26,21 @@ const TodoList = ({todos, setTodos}) => {
       //   }]);
       // }
     };
+    // Handler function to update todo with new input using todo id
+    const updateTodo = (value, todoId) => {
+        if(value === '' || /^\s*$/.test(value)) return;
+        setTodos((currentTodos) => 
+            currentTodos.map((todo) => todo.id ===todoId ? {...todo, task: value, isEditing: !todo.isEditing} : todo));
+    };
     // Handler function to delete todos with given todo id
     const deleteTodo = (todoId) => {
         setTodos((currentTodos) =>
             currentTodos.filter((todo) => todo.id !== todoId));
     };
-    // Handler function to update todo with new input
-    const updateTodo = (value, todoId) => {
-        if(value === '' || /^\s*$/.test(value)) return;
-            setTodos((currentTodos) => 
-                currentTodos.map((todo) => todo.id ===todoId ? {...todo, task: value, isEditing: !todo.isEditing} : todo));
-    };
     // Function to map through todos state array and render Todo component for each item
     const displayTodos = todos.map((todo) => (
         todo.isEditing ? (<EditTodoForm todo={todo} updateTodo={updateTodo} />) :
-        (<Todo todo={todo} toggleComplete={toggleComplete} deleteTodo={deleteTodo} toggleEdit={toggleEdit} />)
+        (<Todo todo={todo} toggleComplete={toggleComplete} toggleEdit={toggleEdit} deleteTodo={deleteTodo} />)
     ));
     return (
         <ul className='todo-list'>
