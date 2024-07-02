@@ -14,7 +14,7 @@ const EditTodoForm = ({todo, updateTodo}) => {
     return(
         <form onSubmit={(e) => handleSubmit(e)}>
             <input onChange={(e) => setValue(e.target.value)} value={value} type='text' placeholder='Edit task' className='todo-input' />
-            <button type='submit' className='todo-btn'>Update Task</button>
+            <button type='submit' className='todo-btn' aria-label='submit'>Update Task</button>
         </form>
     );
 };

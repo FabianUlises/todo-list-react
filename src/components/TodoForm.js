@@ -27,7 +27,7 @@ const TodoForm = ({todos, setTodos}) => {
     return(
         <form onSubmit={(e) => handleSubmit(e)}>
             <input onChange={(e) => setValue(e.target.value)} value={value} type='text' placeholder='Enter new task' className='todo-input' required autoFocus maxLength={60} />
-            <button type='submit' className='todo-btn'>Add Task</button>
+            <button type='submit' className='todo-btn' aria-label='submit'>Add Task</button>
         </form>
     );
 };
