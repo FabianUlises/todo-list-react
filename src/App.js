@@ -6,14 +6,16 @@ function App() {
   // Get localstorage todos
   const getLocalStorage = () => {
     // Getting local storage todos
-    let items = localStorage.getItem('todos');
-    if(items) {
-      items = JSON.parse(items);
-      return items;
-    } else {
-      // If no items returning empty array
-      return [];
-    }
+    let items = localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : [];
+    return items;
+    // let items = localStorage.getItem('todos');
+    // if(items) {
+    //   items = JSON.parse(items);
+    //   return items;
+    // } else {
+    //   // If no items returning empty array
+    //   return [];
+    // }
   };
   // State
   const [todos, setTodos] = useState(getLocalStorage());
